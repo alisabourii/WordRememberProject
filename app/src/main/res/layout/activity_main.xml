@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*"
+            android:padding="8dp">
+
+            <!-- Başlık Satırı -->
+            <TableRow
+                android:background="#DDDDDD">
+
+                <TextView
+                    android:text="Word"
+                    android:padding="12dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:text="Antonym"
+                    android:padding="12dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:text="Past"
+                    android:padding="12dp"
+                    android:textStyle="bold"/>
+            </TableRow>
+
+            <!-- Örnek Satır -->
+            <TableRow>
+
+                <TextView
+                    android:text="iyi"
+                    android:padding="12dp"/>
+
+                <TextView
+                    android:text="kötü"
+                    android:padding="12dp"/>
+
+                <TextView
+                    android:text="iyiydi"
+                    android:padding="12dp"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
