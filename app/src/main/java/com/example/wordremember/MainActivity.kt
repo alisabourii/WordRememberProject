@@ -12,6 +12,9 @@ import android.provider.MediaStore
 import android.text.format.DateFormat
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TableLayout
+import android.widget.TableRow
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,6 +28,7 @@ import java.util.Date
 class MainActivity : AppCompatActivity() {
     private lateinit var btnAdd:Button
     private lateinit var btnSave:Button
+    private lateinit var tableLayout: TableLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +40,46 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        tableLayout = findViewById(R.id.tableLayout)
         btnAdd = findViewById(R.id.btnAdd)
         btnAdd.setOnClickListener {
             Log.e("MSG","HEY HEY HEY")
+
+
+            // Yeni TableRow oluştur
+            val tableRow = TableRow(this)
+
+            // Layout parametreleri
+            tableRow.layoutParams = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT
+            )
+
+            // 1. EditText
+            val word = EditText(this)
+            word.hint = "Word"
+            word.setPadding(12, 12, 12, 12)
+            word.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+
+            // 2. EditText
+            val antonym = EditText(this)
+            antonym.hint = "Antonym"
+            antonym.setPadding(12, 12, 12, 12)
+            antonym.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+
+            // 3. EditText
+            val past = EditText(this)
+            past.hint = "Past"
+            past.setPadding(12, 12, 12, 12)
+            past.layoutParams = TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f)
+
+            // Row içine ekle
+            tableRow.addView(word)
+            tableRow.addView(antonym)
+            tableRow.addView(past)
+
+            // TableLayout'a ekle
+            tableLayout.addView(tableRow)
         }
 
         btnSave = findViewById(R.id.btnSave)
@@ -51,6 +92,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //--------ScreenShot Codes-------------
     fun takeScreenshot() {
         val rootView = window.decorView.rootView
         val bitmap = Bitmap.createBitmap(
@@ -93,6 +135,10 @@ class MainActivity : AppCompatActivity() {
         fos?.use {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
         }
+    }
+
+    fun addLine(){
+
     }
 
 
